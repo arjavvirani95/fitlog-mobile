@@ -1,20 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { WorkoutListScreen } from "./src/screens/WorkoutListScreen";
+import { colors } from "./src/ui/theme";
+import { WorkoutProvider } from "./src/WorkoutContext";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaProvider>
+      <WorkoutProvider>
+        <SafeAreaView style={{ flex: 1, backgroundColor: colors.bg }}>
+          <WorkoutListScreen />
+        </SafeAreaView>
+        <StatusBar style="light" />
+      </WorkoutProvider>
+    </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
