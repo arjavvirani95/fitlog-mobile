@@ -58,3 +58,12 @@ describe("weeklyVolume", () => {
     ]);
   });
 });
+
+import { sampleWorkouts } from "./sample";
+
+describe("sampleWorkouts", () => {
+  it("produces progressive overload", () => {
+    const prs = personalRecords(sampleWorkouts(new Date(2026, 9, 6)));
+    expect(prs.find((p) => p.exercise === "Squat")!.oneRepMax).toBeGreaterThan(110);
+  });
+});

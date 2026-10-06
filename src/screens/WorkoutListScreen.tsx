@@ -1,6 +1,8 @@
 import { Alert, FlatList, Pressable, StyleSheet, Text, View } from "react-native";
+import { sampleWorkouts } from "../domain/sample";
 import { workoutVolume } from "../domain/stats";
 import type { Workout } from "../domain/types";
+import { Button } from "../ui/Button";
 import { colors, spacing } from "../ui/theme";
 import { useWorkouts } from "../WorkoutContext";
 
@@ -18,6 +20,11 @@ export function WorkoutListScreen() {
       <View style={styles.empty}>
         <Text style={styles.emptyTitle}>No workouts yet</Text>
         <Text style={styles.muted}>Tap “Log” to record your first session.</Text>
+        <Button
+          label="Load sample data"
+          variant="ghost"
+          onPress={() => dispatch({ type: "hydrate", workouts: sampleWorkouts() })}
+        />
       </View>
     );
   }
